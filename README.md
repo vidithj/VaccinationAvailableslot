@@ -9,13 +9,18 @@ To run the application :
     -Clone the project into local
     - Inside the folder run : 
         go run main.go 
+
 3. If you use a mac download binary "main" and run in terminal at the binary location : 
     - chmod + x main
-    - . /main
+    - ./main {pincode} {minage} {maxage}
+    - example :  ./main 226010 18 50
 4. If you use a linux download binary "mainLinux" and run in terminal at the binary location : 
     - chmod + x mainLinux
-    - . /main
+    - ./mainLinux {pincode} {minage} {maxage}
+    - example :  ./mainLinux 226010 18 50
 
 4. If you use a windows download binary "mainWindows" and run in terminal at the binary location : 
     - chmod + x mainWindows
-    - . /main
+    - ./mainWindows {pincode} {minage} {maxage}
+    - example :  ./mainWindows 226010 18 50
+

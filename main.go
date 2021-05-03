@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -14,6 +15,7 @@ const url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findBy
 
 var minage = 18
 var maxage = 100
+var pincode = "226010"
 
 type userInfo struct {
 	Pincode string `json:"PINCODE"`
@@ -40,13 +42,21 @@ type Sessions struct {
 }
 
 func main() {
-	user, err := readInfo()
-	if err != nil {
-		fmt.Println("Error while fetching userinfo : ", err)
+	arg := os.Args
+	var cowinurl string
+	if len(arg) > 1 {
+		cowinurl = url + arg[1] + "&date="
+		minage, _ = strconv.Atoi(arg[2])
+		maxage, _ = strconv.Atoi(arg[3])
+	} else {
+		user, err := readInfo()
+		if err != nil {
+			fmt.Println("Error while fetching userinfo : ", err)
+		}
+		cowinurl = url + user[0].Pincode + "&date="
+		minage = user[0].MinAge
+		maxage = user[0].MaxAge
 	}
-	cowinurl := url + user[0].Pincode + "&date="
-	minage = user[0].MinAge
-	maxage = user[0].MaxAge
 	weekdates := getDates()
 	for _, val := range weekdates {
 		found := GetValidSlots(cowinurl + val)
