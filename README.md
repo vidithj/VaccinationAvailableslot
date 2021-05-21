@@ -5,7 +5,6 @@ Get information about Covid 19 Vaccination slots from cowin app and alert you vi
 This application will check the cowin web portal for available slot for next 7 days. If the slot is available it will display the center name and other information regarding the vacciation center.
 
 To run the application : 
-Option 1 : If you have go installed in local then : 
 
 1. Goto assets folder then userninfo.json . Add the pincode area you want to search and minimum age and max age ,hours you want to check again after and your phone number for vaccination center availability.
 
